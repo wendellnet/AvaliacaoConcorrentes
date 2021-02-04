@@ -1,9 +1,9 @@
 # api-avaliacao-concorrentes
 Este projeto api foi construido com flask e python
 
-[![Build Status](https://travis-ci.org/sdetAutomation/flask-api.svg?branch=master)](https://travis-ci.org/sdetAutomation/flask-api)
+[![Build Status](https://travis-ci.com/wendellnet/AvaliacaoConcorrentes.svg?token=2Nz1ALo2tCVY7ZXLxTE3&branch=master)](https://travis-ci.com/wendellnet/AvaliacaoConcorrentes)
 
-[![Build Status](https://github.com/sdetautomation/flask-api/workflows/flask-api/badge.svg)](https://github.com/sdetAutomation/flask-api/actions)
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=acompanhamento-concorrentes&style=flat)
 
 Introdução
 ------------

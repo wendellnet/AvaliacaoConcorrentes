@@ -97,42 +97,42 @@ GET - get_by_populacao: [/populacoes/v1/{codigo}](http://localhost:5000//populac
 ## Rotas publicadas
 -------------------
 ####  [Avaliação de concorrentes] representação das informações sobre fluxos de pessoas;
-GET - get_avaliacao_concorrente: [/avaliacao/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/avaliacao/v1)
+GET - get_avaliacao_concorrente: [/avaliacao/v1](https://acompanhamento-concorrentes.herokuapp.com/avaliacao/v1)
 
 ####  [Avaliação por seguimento] representação comparativa das empresas por seguimento de atuação;
-GET - get_comparativo_seguimento: [/avaliacao/v1/seguimento](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/avaliacao/v1/seguimento)
+GET - get_comparativo_seguimento: [/avaliacao/v1/seguimento](https://acompanhamento-concorrentes.herokuapp.com/avaliacao/v1/seguimento)
 
 ####  [Bairros] representa cadastro de municipios;
-GET - get_all_bairros: [/bairros/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/bairros/v1)
-GET - get_by_bairro: [/bairros/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/bairros/v1/{codigo})
-GET - get_by_bairro_uf: [/bairros/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/bairros/v1/uf)
-GET - get_by_bairro_nome: [/bairros/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/bairros/v1/nome)
-GET - get_by_bairro_municipio: [/bairros/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/bairros/v1/municipio)
+GET - get_all_bairros: [/bairros/v1](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1)
+GET - get_by_bairro: [/bairros/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/{codigo})
+GET - get_by_bairro_uf: [/bairros/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/uf)
+GET - get_by_bairro_nome: [/bairros/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/nome)
+GET - get_by_bairro_municipio: [/bairros/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/municipio)
 
 ####  [Concorrentes] representa cadastro de empresas;
-GET - get_all_concorrentes: [/concorrentes/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1)
-GET - get_by_concorrente: [/concorrentes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1/{codigo})
-GET - get_by_concorrente_uf: [/concorrentes/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1/uf)
-GET - get_by_concorrente_nome: [/concorrentes/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1/nome)
-GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1/municipio)
-GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/concorrentes/v1/codigobairro)
+GET - get_all_concorrentes: [/concorrentes/v1](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1)
+GET - get_by_concorrente: [/concorrentes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/{codigo})
+GET - get_by_concorrente_uf: [/concorrentes/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/uf)
+GET - get_by_concorrente_nome: [/concorrentes/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/nome)
+GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/municipio)
+GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/codigobairro)
 
 ####  [Eventos] representa os logs coletados dos fluxos de pessoas;
-GET - get_all_eventos: [/eventos/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/eventos/v1)
-GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/eventos/v1/concorrente)
-GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/eventos/v1/diadasemana)
-GET - get_by_evento_periodo: [/eventos/v1/periodo](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/eventos/v1/periodo)
+GET - get_all_eventos: [/eventos/v1](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1)
+GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/concorrente)
+GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/diadasemana)
+GET - get_by_evento_periodo: [/eventos/v1/periodo](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/periodo)
 
 ####  [Precopraticado] representa uma rota para cadastro de preços dos concorrentes;
-GET - get_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/precopraticado/v1)
-POST - add_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/precopraticado/v1)
-GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/precopraticado/v1/{faixa_preco})
-PUT - update_descricao: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/precopraticado/v1/{faixa_preco})
-PUT - delete_precopraticado: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/precopraticado/v1/{faixa_preco})
+GET - get_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
+POST - add_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
+GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
+PUT - update_descricao: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
+PUT - delete_precopraticado: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
 
 ####  [Populacao] representa quantidade da população de cada bairro;
-GET - get_all_populacoes: [/populacoes/v1](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes/populacoes/v1)
-GET - get_by_populacao: [/populacoes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/ui/concorrentes//populacoes/v1/{codigo})
+GET - get_all_populacoes: [/populacoes/v1](https://acompanhamento-concorrentes.herokuapp.com/populacoes/v1)
+GET - get_by_populacao: [/populacoes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com//populacoes/v1/{codigo})
 
 
 

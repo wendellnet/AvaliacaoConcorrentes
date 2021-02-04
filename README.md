@@ -1,190 +1,178 @@
-# api-avaliacao-concorrentes
-Este projeto api foi construido com flask e python
+# Processo Seletivo Engenheiro(a) de Dados
+----------
 
-[![Build Status](https://travis-ci.com/wendellnet/AvaliacaoConcorrentes.svg?token=2Nz1ALo2tCVY7ZXLxTE3&branch=master)](https://travis-ci.com/wendellnet/AvaliacaoConcorrentes)
+### Desafio Técnico
+A equipe de produtos tem recebido feedbacks da equipe comercial e eles dizem que alguns clientes do setor de alimentação (restaurantes, pizzarias, bares, etc.) estão procurando soluções que os ajudem a entender melhor seus concorrentes. Eles gostariam de saber qual é a faixa de preço praticada pelos concorrentes, como é o fluxo de pessoas nesses locais, qual é a população e a densidade demográfica dos bairros onde os concorrentes estão, e etc.
 
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=acompanhamento-concorrentes&style=flat)
+----------
+### Dados
 
-Introdução
-------------
-Objetivo desde projeto é implementar uma aplicação que entregue os resultados após analise de eventos que indicam fluxos de pessoas em estabelecimentos comerciais.
+Os dados que você utilizará para desenvolver o desafio podem ser acessados em:
 
-Utilizamos linguagem Python com Flask e interface swagger.
+```bash
+bairros.csv
+concorrentes.csv
+eventos_de_fluxo.csv.gz
+populacao.json
+```
 
-Este serviço armazena seus dados base de dados local sqlite.
-
-Instalando Dependências
------
-[Este projeto usa ambiente virtual Pipenv.](https://pipenv.readthedocs.io)
-
-Se você tiver o MacOS, instale as dependências pelo homebrew:
-
-`brew install pipenv`
-
-Rode o comando abaixo para instalar as dependências locais em seu computador:
-
-`pipenv install`
+### Descrição dos dados
 
 
-Executando a aplicação
-----------------------
-Após você ter instalado todas dependências, você deve abrir um terminal de comandos e executar o comando abaixo:
-Entre a pasta root deste projeto e digite:
-`pipenv run python app.py`
-
-Ou você pode iniciar a aplicação usando a sua IDE preferida, PyCharm, VSCode.
+**eventos_de_fluxo.csv.gz:** contém os dados do fluxo de pessoas. São eventos dos celulares de pessoas que permanecem mais de 5 minutos em um estabelecimento comercial.
+Esses dados são enviados diariamente para a area. Este arquivo possui uma pequena amostra dos dados.
 
 
-Database
---------
-Este projeto usa um base local SQLITE para seu repositorio.  
+*Campo*                 | *Descrição*
+---------------------   | -----------------
+*CODIGO*                | *Código do evento*
+*DATETIME*              | *Data e hora do evento*
+*CODIGO_CONCORRENTE*    | *Código do concorrente*
 
-Interface
----------
-Este projeto contêm uma inteface(UI) SWAGGER.  
-
-[Para maiores informações sobre swagger. Clique aqui.](https://swagger.io/)
-
-[Para maiores informações sobre connexion. Clique aqui.](https://connexion.readthedocs.io/en/latest/)
-
-Para visualizar esta aplicação api swagger, execute e navegue para endereço [http://localhost:5000/ui/]
-
-Você pode testar esta aplicação entrando no endeço web abaixo. 
-
-Deploy dessa aplicação está sendo realizado no [heroku](https://www.heroku.com/).  
-Para visualizar está api, navegue para [https://acompanhamento-concorrentes.herokuapp.com/ui/]
-
-Rest Api 
---------
-####  [Avaliação de concorrentes] representação das informações sobre fluxos de pessoas;
-GET - get_avaliacao_concorrente: [/avaliacao/v1](http://localhost:5000/avaliacao/v1)
-
-####  [Avaliação por seguimento] representação comparativa das empresas por seguimento de atuação;
-GET - get_comparativo_seguimento: [/avaliacao/v1/seguimento](http://localhost:5000/avaliacao/v1/seguimento)
-
-####  [Bairros] representa cadastro de municipios;
-GET - get_all_bairros: [/bairros/v1](http://localhost:5000/bairros/v1)
-GET - get_by_bairro: [/bairros/v1/{codigo}](http://localhost:5000/bairros/v1/{codigo})
-GET - get_by_bairro_uf: [/bairros/v1/uf](http://localhost:5000/bairros/v1/uf)
-GET - get_by_bairro_nome: [/bairros/v1/nome](http://localhost:5000/bairros/v1/nome)
-GET - get_by_bairro_municipio: [/bairros/v1/municipio](http://localhost:5000/bairros/v1/municipio)
-
-####  [Concorrentes] representa cadastro de empresas;
-GET - get_all_concorrentes: [/concorrentes/v1](http://localhost:5000/concorrentes/v1)
-GET - get_by_concorrente: [/concorrentes/v1/{codigo}](http://localhost:5000/concorrentes/v1/{codigo})
-GET - get_by_concorrente_uf: [/concorrentes/v1/uf](http://localhost:5000/concorrentes/v1/uf)
-GET - get_by_concorrente_nome: [/concorrentes/v1/nome](http://localhost:5000/concorrentes/v1/nome)
-GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](http://localhost:5000/concorrentes/v1/municipio)
-GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](http://localhost:5000/concorrentes/v1/codigobairro)
-
-####  [Eventos] representa os logs coletados dos fluxos de pessoas;
-GET - get_all_eventos: [/eventos/v1](http://localhost:5000/eventos/v1)
-GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](http://localhost:5000/eventos/v1/concorrente)
-GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](http://localhost:5000/eventos/v1/diadasemana)
-GET - get_by_evento_periodo: [/eventos/v1/periodo](http://localhost:5000/eventos/v1/periodo)
-
-####  [Precopraticado] representa uma rota para cadastro de preços dos concorrentes;
-GET - get_precopraticado: [/precopraticado/v1](http://localhost:5000/precopraticado/v1)
-POST - add_precopraticado: [/precopraticado/v1](http://localhost:5000/precopraticado/v1)
-GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](http://localhost:5000/precopraticado/v1/{faixa_preco})
-PUT - update_descricao: [/precopraticado/v1/{faixa_preco}](http://localhost:5000/precopraticado/v1/{faixa_preco})
-PUT - delete_precopraticado: [/precopraticado/v1/{faixa_preco}](http://localhost:5000/precopraticado/v1/{faixa_preco})
-
-####  [Populacao] representa quantidade da população de cada bairro;
-GET - get_all_populacoes: [/populacoes/v1](http://localhost:5000/populacoes/v1)
-GET - get_by_populacao: [/populacoes/v1/{codigo}](http://localhost:5000//populacoes/v1/{codigo})
-
-## Rotas publicadas
--------------------
-####  [Avaliação de concorrentes] representação das informações sobre fluxos de pessoas;
-GET - get_avaliacao_concorrente: [/avaliacao/v1](https://acompanhamento-concorrentes.herokuapp.com/avaliacao/v1)
-
-####  [Avaliação por seguimento] representação comparativa das empresas por seguimento de atuação;
-GET - get_comparativo_seguimento: [/avaliacao/v1/seguimento](https://acompanhamento-concorrentes.herokuapp.com/avaliacao/v1/seguimento)
-
-####  [Bairros] representa cadastro de municipios;
-GET - get_all_bairros: [/bairros/v1](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1)
-GET - get_by_bairro: [/bairros/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/{codigo})
-GET - get_by_bairro_uf: [/bairros/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/uf)
-GET - get_by_bairro_nome: [/bairros/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/nome)
-GET - get_by_bairro_municipio: [/bairros/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/bairros/v1/municipio)
-
-####  [Concorrentes] representa cadastro de empresas;
-GET - get_all_concorrentes: [/concorrentes/v1](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1)
-GET - get_by_concorrente: [/concorrentes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/{codigo})
-GET - get_by_concorrente_uf: [/concorrentes/v1/uf](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/uf)
-GET - get_by_concorrente_nome: [/concorrentes/v1/nome](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/nome)
-GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/municipio)
-GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/codigobairro)
-
-####  [Eventos] representa os logs coletados dos fluxos de pessoas;
-GET - get_all_eventos: [/eventos/v1](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1)
-GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/concorrente)
-GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/diadasemana)
-GET - get_by_evento_periodo: [/eventos/v1/periodo](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/periodo)
-
-####  [Precopraticado] representa uma rota para cadastro de preços dos concorrentes;
-GET - get_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
-POST - add_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
-GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
-PUT - update_descricao: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
-PUT - delete_precopraticado: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})
-
-####  [Populacao] representa quantidade da população de cada bairro;
-GET - get_all_populacoes: [/populacoes/v1](https://acompanhamento-concorrentes.herokuapp.com/populacoes/v1)
-GET - get_by_populacao: [/populacoes/v1/{codigo}](https://acompanhamento-concorrentes.herokuapp.com//populacoes/v1/{codigo})
+</br>
 
 
+**populacao.json:** contém a quantidade de habitantes por bairro. 
 
-TDD - Testes Integrados
------------------------
-Esta API é totalmente testada com testes de unidade e testes de integração. Por favor, veja o diretório de testes para exemplos.
 
-Os testes se conectam a test.db para testes de integração.
+*Campo*                 | *Descrição*
+---------------------   | -----------------
+*CODIGO*                | *Código do bairro*
+*POPULACAO*             | *Quantidade de habitantes*
 
-    
-Flask 
------
-Este é um projeto Flask. [Para mais informações clique aqui](http://flask.pocoo.org/)
-    
-    
-Docker
------
-seu aplicativo pode ser executado no Docker. Consulte Dockerfile para configuração de imagem. Passos para criar uma imagem e como executá-la o aplicativo em uma lista de contêineres abaixo. (deve ter docker instalado)
 
-Criando a Imagem Docker: `docker build -t avaliacao-concorrentes-api .`
+</br>
 
-Executando o container docker: `docker run -it -p 5000:5000 avaliacao-concorrentes-api`
 
-__*** Assim que o aplicativo for iniciado, visualize o swagger ui navegando até [http://localhost:5000/ui/] ***__
+**bairros.csv:** contém as informações dos bairros.
 
-Visualizando imagem docker: `docker images`
 
-Visualizando containes docker: `docker ps -a`
+*Campo*        | *Descrição*
+-------------  | -----------------
+*CODIGO*       | *Código do bairro*
+*NOME*         | *Nome do bairro*
+*MUNICIPIO*    | *Cidade*
+*UF*    	   | *Estado*
+*AREA*    	   | *Área do bairro em km²*
 
-Remover imagem docker: `docker rmi $(docker images -q)`
+</br>
 
-Remover container docker: `docker rm $(docker ps -aq)`
+**concorrentes.csv:** contém os dados de concorrentes. 
 
-[Clique aqui para obter mais informações sobre o docker](https://docs.docker.com/)
 
-__* Nota: este aplicativo flask por padrão é executado como um servidor de desenvolvimento, não destinado à produção. Docker e gunicorn é usado para produzir este aplicativo. Este contêiner docker funciona como um servidor WSGI de produção, com 4 trabalhadores via [gunicorn](https://gunicorn.org/). *__
+*Campo*         | *Descrição*
+-------------   | -----------------
+*CODIGO*        | *Código do concorrente*
+*NOME*          | *Nome do concorrente*
+*CATEGORIA*     | *Atividade econômica*
+*FAIXA_PRECO*   | *Faixa de preço praticada*
+*ENDERECO*      | *Endereço*
+*MUNICIPIO*     | *Cidade*
+*UF*    	    | *Estado*
+*CODIGO_BAIRRO* | *Bairro*
 
-   
-Integração Continua(CI)
------------------------
-Um web hook foi configurado com o Travis CI para todas as solicitações push e pull.
+</br>
 
-Um web hook também foi configurado com Github Actions para todas as solicitações Push e Pull. 
 
-Implantação Contínua(CD)
-------------------------
-Este aplicativo está configurado para implantar via [heroku] (https://www.heroku.com/) após uma CI bem-sucedida.
+----------
 
-Para visualizar o deploy [clique aqui](https://acompanhamento-concorrentes.herokuapp.com/ui/)
+### Objetivo
 
-Contato / Questões / Contribuição
----------------------------------
-Sinta-se à vontade para bifurcar este repositório, adicionar a ele e criar uma solicitação pull se desejar contribuir.
+Atualmente um dos nossos desafios é criar serviços de dados escaláveis, otimizados para o armazenamento e para o acesso aos dados.
 
-Se você tiver alguma dúvida, pode entrar em contato comigo por e-mail: `wendell.lopes.nascimento@gmail.com`
+Nossos Analistas examinaram os dados de fluxo de pessoas e concluíram que a melhor forma de apresentar essa informação seria segmentando o fluxo por dias da semana e períodos do dia (manhã, tarde e noite), ou seja, os clientes precisam saber quantas pessoas em média frequentam seus concorrentes em cada dia da semana e em cada período do dia. Para encontrar fluxo médio de pessoas é preciso considerar os eventos dos mesmos dias da semana e dos mesmos períodos do dia.
+
+A densidade demográfica de um bairro é uma informação muito importante para nossos clientes e é uma informação que precisa ser calculada. A densidade demográfica de um bairro é o resultado da  divisão da população do bairro pela área do bairro.
+
+----------
+
+### Entrega
+
+Com o conhecimento sobre os dados que você irá trabalhar e regras mencionadas, agora você precisa construir uma aplicação que calcule e apresente as informações dos concorrentes como código, nome, endereço, preço praticado, fluxo médio de pessoas por dia da semana e por período do dia, bairro e a população e a densidade demográfica do bairro.
+
+##### Exemplo de saída:
+
+```
+{
+   "cod_concorrente":"   ",
+   "nome_concorrente":"Porto da Pizza",
+   "endereço":"Av Campos Salles, 751",
+   "preco_praticado":"50,00",
+   "fluxo_medio":{
+      "segunda-feira":{
+         "manhã":"3",
+         "tarde":"5.5",
+         "noite":"10"
+         },
+       "terça-feira":{
+         "manhã":"1",
+         "tarde":"9.67",
+         "noite":"4"
+         },
+       "quarta-feira":{
+         "manhã":"5",
+         "tarde":"12",
+         "noite":"22"
+         },
+       "quinta-feira":{
+         "manhã":"3",
+         "tarde":"9",
+         "noite":"24"
+         },
+       "sexta-feira":{
+         "manhã":"3",
+         "tarde":"6",
+         "noite":"28"
+         },
+       "sábado":{
+         "manhã":"15.6",
+         "tarde":"45.78",
+         "noite":"100.5"
+         },
+       "domingo":{
+         "manhã":"5",
+         "tarde":"24",
+         "noite":"40"
+         }    
+   },
+   "bairro":"Morumbi",
+   "população":32281,
+   "densidade":2832
+}
+```
+
+----------
+### Expectativa
+
+Seu objetivo agora é implementar uma aplicação que entregue os resultados em um conjunto de dados com as características citadas acima. A aplicação pode ser um script ou uma REST API e você pode utilizar qualquer linguagem open source e framework/lib que se sinta confortável.
+
+O que vamos avaliar?
+
+Iremos avaliar a sua solução pela:
+
+ - Performance (multiprocess para subir a base)
+ - Escalabilidade 
+ - Portabilidade
+ - Qualidade do código
+ - Facilidade de manutenção
+
+----------
+
+### Prazo e como entregar
+
+Prazo de 7 dias a partir do momento que você receber o desafio.
+
+Para entregá-lo você deve usar o serviço de hospedagem GitHub. O repositório deve ser PRIVADO e o acesso liberado para o usuário `xxxxxxx`.
+
+Pedimos que você faça um ** ** com pelo menos instruções básicas como:
+
+ - Como rodar localmente?
+ - Como rodar os testes?
+ - Como fazer o deploy?
+
+
+Quando terminar o desafio, avise para o recrutador para podermos dar início a correção.
+
+Bom teste!
+
+----------

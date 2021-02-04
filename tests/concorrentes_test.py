@@ -28,7 +28,7 @@ def helper(json_info):
         return str(json.loads(first_row))
 
 def test_concorrente_tc0001_get_all_concorrentes(client):
-    td_codigo_concorrente = '650509405109544'
+    td_codigo_concorrente = '431962533652067'
     response = client.get('/concorrentes/v1')
     # using helper to format response json for assert
     json_info = helper(response.response)
@@ -40,7 +40,7 @@ def test_concorrente_tc0001_get_all_concorrentes(client):
         assert False 
 
 def test_concorrente_tc0002_get_by_concorrente(client):
-    td_codigo = '650509405109544'
+    td_codigo = '431962533652067'
     response = client.get('/concorrentes/v1/' + td_codigo)
     # using helper to format response json for assert
     json_info = helper(response.response)

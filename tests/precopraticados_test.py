@@ -72,7 +72,7 @@ def test_precopraticados_tc0003_post(client):
 
 def test_precopraticados_tc0004_put(client):
     td_faixa_preco = '2'
-    td_descricao = 'R$40,00 à R$80,00'
+    td_descricao = 'R$41,00 à R$80,00'
 
     response = client.put('/precopraticado/v1/' + td_faixa_preco, data=json.dumps(dict(descricao=td_descricao)),
                           mimetype='application/json')

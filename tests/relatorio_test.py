@@ -41,7 +41,7 @@ def test_avaliacao_tc0007_get_avaliacao_concorrente(client):
         assert False  
 
 def test_avaliacao_tc0008_get_comparativo_seguimento(client):
-    td_categoria = 'Bar'
+    td_categoria = 'gelatoshop'
     response = client.get('/avaliacao/v1/seguimento?categoria='+td_categoria)
     # using helper to format response json for assert
     json_info = helper(response.response)

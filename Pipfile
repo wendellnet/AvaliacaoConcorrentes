@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+connexion = "2.7.0"
+sqlalchemy = "*"
+flask-sqlalchemy = "*"
+psycopg2-binary = "*"
+gunicorn = "*"
+jsonschema = "*"
+swagger-ui-bundle = "*"
+pytest = "<=4.*"
+pipenv-to-requirements = "*"
+pandas = "1.2.1"
+colorama = "0.4.4"
+[dev-packages]
+
+[requires]
+python_version = "3.7"

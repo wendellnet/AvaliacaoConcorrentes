@@ -1,0 +1,769 @@
+swagger: "2.0"
+info:
+  description: Projeto para <strong>Processo Seletivo Engenheiro(a) de Dados</strong><br/><br/>
+    Esta interface serve para auxiliar na navegação das rotas.<br/>
+    - [<strong>Carregar Dados</strong>] passo inicial para realização da carga das informações fornecidas;<br/>
+    - [<strong>Avaliação de concorrentes</strong>] representação das informações sobre fluxos de pessoas;<br/>
+    - [<strong>Avaliação por seguimento</strong>] representação comparativa das empresas por seguimento de atuação;<br/>
+    - [<strong>Bairros</strong>] representa cadastro de municipios;<br/>
+    - [<strong>Concorrentes</strong>] representa cadastro de empresas;<br/>
+    - [<strong>Eventos</strong>] representa os logs coletados dos fluxos de pessoas;<br/>
+    - [<strong>Precopraticado</strong>] representa uma rota para cadastro de preços dos concorrentes;<br/>    
+
+  version: "1.0.0"
+  title: Avaliação de Concorrentes
+consumes:
+  - application/json
+produces:
+  - application/json
+
+#basePath: /
+
+# Paths suportados pela aplicação
+paths:
+  /carregardados:
+    get:
+      operationId: api.main.create_db
+      tags:
+      - carregar-dados
+      summary: Cria um banco de dados
+      description: Criar um banco de dados com a importação das tabelas abaixo <br/>
+        [<strong>bairros</strong>][<strong>concorrentes</strong>][<strong>populacoes</strong>][<strong>precopraticado</strong>][<strong>eventos</strong>]
+      responses:
+        200:
+          description: Database criado
+        400:
+          description: Erro na carga de dados
+
+  /:
+    get:
+      operationId: api.main.welcome
+      tags:
+        - bem-vindo
+      summary: Bem vindo
+      description: Exibe mensagem de boas-vindas
+      responses:
+        200:
+          description: Veja uma mensagem de boas-vindas
+
+  /health:
+    get:
+      operationId: api.main.health
+      tags:
+        - health
+      summary: Verifica Status
+      description: Executar verificação de status da API
+      responses:
+        200:
+          description: O aplicativo está funcionando normalmente
+
+  /bairros/v1:
+    get:
+      operationId: api.bairros.get_all_bairros
+      tags:
+        - bairros
+      summary: Recupera todos os bairros
+      description: Mostra todos os bairros
+      responses:
+        200:
+          description: Veja todos os bairros
+  /bairros/v1/{codigo}:
+    get:
+      operationId: api.bairros.get_by_bairro
+      tags:
+        - bairros
+      summary: Recupera bairro pelo codigo do bairro
+      description: Mostra bairro pelo codigo do bairro
+      parameters:
+        - name: codigo
+          in: path
+          description: Recupera dados do codigo do bairro
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do bairro com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo:
+                  type: string
+                nome:
+                  type: string
+                municipio:
+                  type: string
+                uf:
+                  type: string
+                area:
+                  type: integer
+        404:
+          description: Bairro não encontrado
+  /bairros/v1/uf:
+    get:
+      operationId: api.bairros.get_by_bairro_uf
+      tags:
+        - bairros
+      summary: Recupera bairro pelo Estado(UF)
+      description: Mostra bairro pelo Estado(UF)
+      parameters:
+        - name: uf
+          in: query
+          description:  Recupera dados por Estado(UF)
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do bairro com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo:
+                  type: string
+                nome:
+                  type: string
+                municipio:
+                  type: string
+                uf:
+                  type: string
+                area:
+                  type: integer
+        404:
+          description: Bairro não encontrado
+  /bairros/v1/nome:
+    get:
+      operationId: api.bairros.get_by_bairro_nome
+      tags:
+        - bairros
+      summary: Recupera bairro pelo Nome
+      description: Mostra bairro pelo Nome
+      parameters:
+        - name: nome
+          in: query
+          description:  Recupera dados por Nome
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do bairro com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo:
+                  type: string
+                nome:
+                  type: string
+                municipio:
+                  type: string
+                uf:
+                  type: string
+                area:
+                  type: integer
+        404:
+          description: Bairro não encontrado
+  /bairros/v1/municipio:
+    get:
+      operationId: api.bairros.get_by_bairro_municipio
+      tags:
+        - bairros
+      summary: Recupera bairro pelo Município
+      description: Mostra bairro pelo Município
+      parameters:
+        - name: municipio
+          in: query
+          description:  Recupera dados por Município
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do bairro com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo:
+                  type: string
+                nome:
+                  type: string
+                municipio:
+                  type: string
+                uf:
+                  type: string
+                area:
+                  type: integer
+        404:
+          description: Bairro não encontrado
+  
+  /populacoes/v1:
+    get:
+      operationId: api.populacoes.get_all_populacoes
+      tags:
+        - população
+      summary: Recupera registros da população
+      description: Mostrar todos registros
+      responses:
+        200:
+          description: Visualize todos os registros
+
+  /populacoes/v1/{codigo}:
+    get:
+      operationId: api.populacoes.get_by_populacao
+      tags:
+        - população
+      summary: Recupera registros da população
+      description: Mostrar todos registros
+      parameters:
+        - name: codigo
+          in: path
+          description: Recupera dados por codigo 
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações da população com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: integer
+                populacao: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+  /eventos/v1:
+    get:
+      operationId: api.eventos.get_all_eventos
+      tags:
+        - eventos
+      summary: Recupera todos os itens de eventos
+      description: Mostra todos logs de eventos de fluxo de pessoas
+      parameters:
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.
+      responses:
+        200:
+          description: Veja todos os itens de eventos
+      responses:
+        200:
+          description: Exibir informações do bairro com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo:
+                  type: string
+                data:
+                  type: string
+                codigo_concorrente:
+                  type: string
+                diadasemana:
+                  type: string
+                hora:
+                  type: integer
+                periodo:
+                  type: string
+  /eventos/v1/concorrente:
+    get:
+      operationId: api.eventos.get_by_evento_codigo_concorrente
+      tags:
+        - eventos
+      summary: Recupera eventos pelo codigo do concorrente
+      description: Mostra eventos pelo codigo do concorrente
+      parameters:
+        - name: codigo_concorrente
+          in: query
+          description:  Recupera dados por codigo do concorrente
+          type: string
+          required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.
+      responses:
+        200:
+          description: Exibir informações eventos por concorrente
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                date: 
+                  type: string
+                codigo_concorrente:
+                  type: string
+                diadasemana: 
+                  type: string
+                hora: 
+                  type: integer
+                periodo: 
+                  type: string
+        404:
+          description: eventos não encontrados
+  /eventos/v1/diadasemana:
+    get:
+      operationId: api.eventos.get_by_evento_diadasemana
+      tags:
+        - eventos
+      summary: Recupera eventos pelo dia da semana
+      description: Mostra eventos pelo dia da semana
+      parameters:
+        - name: diadasemana
+          in: query
+          description:  Recupera dados por dia da semana
+          type: string
+          required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.
+      responses:
+        200:
+          description: Exibir informações eventos por dia da semana
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                data: 
+                  type: string
+                codigo_concorrente:
+                  type: string
+                diadasemana: 
+                  type: string
+                hora: 
+                  type: integer
+                periodo: 
+                  type: string
+        404:
+          description: eventos não encontrados
+  /eventos/v1/periodo:
+    get:
+      operationId: api.eventos.get_by_evento_periodo
+      tags:
+        - eventos
+      summary: Recupera eventos por período
+      description: Mostra eventos por período
+      parameters:
+        - name: periodo
+          in: query
+          description:  Recupera dados por período
+          type: string
+          required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.
+      responses:
+        200:
+          description: Exibir informações eventos por período
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                data: 
+                  type: string
+                codigo_concorrente:
+                  type: string
+                diadasemana: 
+                  type: string
+                hora: 
+                  type: integer
+                periodo: 
+                  type: string
+        404:
+          description: eventos não encontrado
+  /concorrentes/v1:
+    get:
+      operationId: api.concorrentes.get_all_concorrentes
+      tags:
+        - concorrentes
+      summary: Recupera todos os concorrentes
+      description: Mostra todos os concorrentes
+      responses:
+        200:
+          description: Veja todos os concorrentes
+
+  /concorrentes/v1/{codigo}:
+    get:
+      operationId: api.concorrentes.get_by_concorrente
+      tags:
+        - concorrentes
+      summary: Recupera concorrente pelo codigo do concorrente
+      description: Mostra concorrente pelo codigo do concorrente
+      parameters:
+        - name: codigo
+          in: path
+          description: Recupera dados do codigo do concorrente
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do concorrente com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                nome: 
+                  type: string
+                categoria: 
+                  type: string
+                faixa_preco: 
+                  type: string
+                municipio: 
+                  type: string
+                uf: 
+                  type: string
+                codigo_bairro: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+
+  /concorrentes/v1/uf:
+    get:
+      operationId: api.concorrentes.get_by_concorrente_uf
+      tags:
+        - concorrentes
+      summary: Recupera concorrente pelo Estado(UF)
+      description: Mostra concorrente pelo Estado(UF)
+      parameters:
+        - name: uf
+          in: query
+          description:  Recupera dados por Estado(UF)
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do concorrente com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                nome: 
+                  type: string
+                categoria: 
+                  type: string
+                faixa_preco: 
+                  type: integer
+                municipio: 
+                  type: string
+                uf: 
+                  type: string
+                codigo_bairro: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+
+  /concorrentes/v1/nome:
+    get:
+      operationId: api.concorrentes.get_by_concorrente_nome
+      tags:
+        - concorrentes
+      summary: Recupera concorrente pelo Nome
+      description: Mostra concorrente pelo Nome
+      parameters:
+        - name: nome
+          in: query
+          description:  Recupera dados por Nome
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do concorrente com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                nome: 
+                  type: string
+                categoria: 
+                  type: string
+                faixa_preco: 
+                  type: integer
+                municipio: 
+                  type: string
+                uf: 
+                  type: string
+                codigo_bairro: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+
+  /concorrentes/v1/municipio:
+    get:
+      operationId: api.concorrentes.get_by_concorrente_municipio
+      tags:
+        - concorrentes
+      summary: Recupera concorrente pelo Municipio
+      description: Mostra concorrente pelo Municipio
+      parameters:
+        - name: municipio
+          in: query
+          description:  Recupera dados por Municipio
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do concorrente com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                nome: 
+                  type: string
+                categoria: 
+                  type: string
+                faixa_preco: 
+                  type: integer
+                municipio: 
+                  type: string
+                uf: 
+                  type: string
+                codigo_bairro: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+
+  /concorrentes/v1/codigobairro:
+    get:
+      operationId: api.concorrentes.get_by_concorrente_codigo_bairro
+      tags:
+        - concorrentes
+      summary: Recupera concorrente pelo codigo do bairro
+      description: Mostra concorrente pelo codigo do bairro
+      parameters:
+        - name: codigo_bairro
+          in: query
+          description:  Recupera dados por codigo do bairro
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações do concorrente com sucesso
+          schema:
+            type: array
+            items:
+              properties:
+                codigo: 
+                  type: string
+                nome: 
+                  type: string
+                categoria: 
+                  type: string
+                faixa_preco: 
+                  type: integer
+                municipio: 
+                  type: string
+                uf: 
+                  type: string
+                codigo_bairro: 
+                  type: integer
+        404:
+          description: concorrente não encontrado
+  
+  /avaliacao/v1:
+    get:
+      operationId: api.relatorio.get_avaliacao_concorrente
+      tags:
+        - avaliação dos concorrentes
+      summary: Recupera avaliação pelo codigo do concorrente
+      description: <i>Objetivo desta avaliação é demonstrar uma análise do fluxo médio de pessoas por <br/>
+        dia da semana e períodos do dia.<br/> Código de exemplo [<strong>650509405109544</strong>]
+        </i>
+      parameters:
+        - name: codigo_concorrente
+          in: query
+          description:  Recupera dados por código do concorrente
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações relatório por concorrente
+        404:
+          description: Eventos não localizados para este concorrente
+  /avaliacao/v1/seguimento:
+    get:
+      operationId: api.relatorio.get_comparativo_seguimento
+      tags:
+        - avaliação dos concorrentes por seguimento
+      summary: Recupera avaliação por seguimento
+      description: <i>Objetivo desta avaliação é demonstrar uma análise do fluxo médio de pessoas por <br/>
+        dia da semana e períodos do dia, comparando entre empresas do mesmo seguimento.<br/> Categoria de exemplo [<strong>Bar , Restaurant</strong>]
+        </i>
+      parameters:
+        - name: categoria
+          in: query
+          description:  Recupera dados por categoria
+          type: string
+          required: true
+      responses:
+        200:
+          description: Exibir informações comparativas por seguimento
+        404:
+          description: Eventos não localizados        
+  /precopraticado/v1:
+    get:
+      operationId: api.precopraticados.get_precopraticado
+      tags:
+        - precopraticados
+      summary: Recuperando todos preços praticados
+      description: Mostrando preços praticados
+      responses:
+        200:
+          description: Visualizando todos preços praticados
+    post:
+      operationId: api.precopraticados.add_precopraticado
+      tags:
+        - precopraticados
+      summary: Incluindo preço praticado
+      description: Incluindo um único registro
+      parameters:
+        - name: precopraticado
+          in: body
+          description: criando preço praticado
+          required: true
+          schema:
+            type: object
+            properties:
+              faixa_preco:
+                type: integer
+              descricao:
+                type: string
+      responses:
+        200:
+          description: Sucesso na criação preço praticado
+        400:
+          description: Invalida requisição
+
+  /precopraticado/v1/{faixa_preco}:
+    get:
+      operationId: api.precopraticados.get_by_faixa_preco
+      tags:
+        - precopraticados
+      summary: Recuperando preço praticado pela faixa de preço
+      description: Visualização por faixa de preço
+      parameters:
+        - name: faixa_preco
+          in: path
+          description: recuperando dados
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Sucesso na visualização por faixa de preço
+          schema:
+            type: array
+            items:
+              properties:
+                faixa_preco:
+                  type: integer
+                descricao:
+                  type: string
+        404:
+          description: Faixa de preço não encontrado
+
+    put:
+      operationId: api.precopraticados.update_descricao
+      tags:
+        - precopraticados
+      summary: Atualizar faixa de preço
+      description: Atualizar uma unica faixa de preço
+      parameters:
+        - name: faixa_preco
+          in: path
+          description: faixa de preço para atualizar
+          type: integer
+          required: true
+        - name: descricao
+          in: body
+          description: campo para atualizar
+          required: true
+          schema:
+            type: object
+            properties:
+              descricao:
+                type: string
+      responses:
+        204:
+          description: Sucesso na atualização da descricao da faixa de preço
+        400:
+          description: Invalid request
+
+    delete:
+      operationId: api.precopraticados.delete_precopraticado
+      tags:
+        - precopraticados
+      summary: Excluir preço praticado pela faixa de preço
+      description: Excluir por faixa de preço
+      parameters:
+        - name: faixa_preco
+          in: path
+          description: Exclur faixa de preço
+          type: integer
+          required: true
+      responses:
+        204:
+          description: Sucessfully preço praticado
+        404:
+          description: Preco praticado não encontrado, indisponivel para excluir.
+    

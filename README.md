@@ -7,31 +7,28 @@ Este projeto api foi construido com flask e python
 
 Introdução
 ------------
-Objetivo desde projeto é demonstrar fluxo de pessoas e densidade das regiões.
+Objetivo desde projeto é implementar uma aplicação que entregue os resultados após analise de eventos que indicam fluxos de pessoas em estabelecimentos comerciais.
 
-Este projeto cria endpoints Python e Flask.
+Utilizamos linguagem Python com Flask e interface swagger.
 
 Este serviço armazena seus dados base de dados local sqlite.
 
-This projet was written using PyCharm Community Edition.   
-
-
-Instalando Dependencias
+Instalando Dependências
 -----
 [Este projeto usa ambiente virtual Pipenv.](https://pipenv.readthedocs.io)
 
-Se você tiver o MacOS, instale as dependencias pelo homebrew:
+Se você tiver o MacOS, instale as dependências pelo homebrew:
 
 `brew install pipenv`
 
-Rode o comando abaixo para instalar as dependencias locais em seu computador:
+Rode o comando abaixo para instalar as dependências locais em seu computador:
 
 `pipenv install`
 
 
 Executando a aplicação
 ----------------------
-Após você ter instalado todas dependencias, você deve abrir um terminal de comandos e executar o comando abaixo:
+Após você ter instalado todas dependências, você deve abrir um terminal de comandos e executar o comando abaixo:
 Entre a pasta root deste projeto e digite:
 `pipenv run python app.py`
 

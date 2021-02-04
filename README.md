@@ -1,18 +1,17 @@
-```                                                                      
-# Instalação Local
-```
-# api-avalizacao-concorrentes
+# api-avaliacao-concorrentes
 Este projeto api foi construido com flask e python
 
 [![Build Status](https://travis-ci.org/sdetAutomation/flask-api.svg?branch=master)](https://travis-ci.org/sdetAutomation/flask-api)
 
 [![Build Status](https://github.com/sdetautomation/flask-api/workflows/flask-api/badge.svg)](https://github.com/sdetAutomation/flask-api/actions)
 
-Introduction
+Introdução
 ------------
-This project is made for anyone who is looking for an example of how to create a rest endpoint using Python and Flask.
+Objetivo desde projeto é demonstrar fluxo de pessoas e densidade das regiões.
 
-This service calls a local sqlite database. Please see databases directory for more details. 
+Este projeto cria endpoints Python e Flask.
+
+Este serviço armazena seus dados base de dados local sqlite.
 
 This projet was written using PyCharm Community Edition.   
 

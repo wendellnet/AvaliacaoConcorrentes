@@ -9,9 +9,9 @@ Introdução
 ------------
 Objetivo desde projeto é implementar uma aplicação que entregue os resultados após analise de eventos que indicam fluxos de pessoas em estabelecimentos comerciais.
 
-Utilizamos linguagem Python com Flask e interface swagger.
+Utilizei linguagem Python com Flask e interface swagger.
 
-Este serviço armazena seus dados base de dados local sqlite.
+Este serviço armazena seus dados em banco de dados sqlite.
 
 Instalando Dependências
 -----
@@ -29,7 +29,7 @@ Rode o comando abaixo para instalar as dependências locais em seu computador:
 Executando a aplicação
 ----------------------
 Após você ter instalado todas dependências, você deve abrir um terminal de comandos e executar o comando abaixo:
-Entre a pasta root deste projeto e digite:
+Entre na pasta root deste projeto e digite:
 `pipenv run python app.py`
 
 Ou você pode iniciar a aplicação usando a sua IDE preferida, PyCharm, VSCode.
@@ -37,7 +37,7 @@ Ou você pode iniciar a aplicação usando a sua IDE preferida, PyCharm, VSCode.
 
 Database
 --------
-Este projeto usa um base local SQLITE para seu repositorio.  
+Este projeto usa uma base local SQLITE (database.db) para seu repositório.  
 
 Interface
 ---------
@@ -49,7 +49,7 @@ Este projeto contêm uma inteface(UI) SWAGGER.
 
 Para visualizar esta aplicação api swagger, execute e navegue para endereço [http://localhost:5000/ui/]
 
-Você pode testar esta aplicação entrando no endeço web abaixo. 
+Você pode testar esta aplicação entrando no endereço web abaixo. 
 
 Deploy dessa aplicação está sendo realizado no [heroku](https://www.heroku.com/).  
 Para visualizar está api, navegue para [https://acompanhamento-concorrentes.herokuapp.com/ui/]
@@ -77,13 +77,13 @@ GET - get_by_concorrente_nome: [/concorrentes/v1/nome](http://localhost:5000/con
 GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](http://localhost:5000/concorrentes/v1/municipio)
 GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](http://localhost:5000/concorrentes/v1/codigobairro)
 
-####  [Eventos] representa os logs coletados dos fluxos de pessoas;
+####  [Eventos] representa os logs coletados dos concorrenstes;
 GET - get_all_eventos: [/eventos/v1](http://localhost:5000/eventos/v1)
 GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](http://localhost:5000/eventos/v1/concorrente)
 GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](http://localhost:5000/eventos/v1/diadasemana)
 GET - get_by_evento_periodo: [/eventos/v1/periodo](http://localhost:5000/eventos/v1/periodo)
 
-####  [Precopraticado] representa uma rota para cadastro de preços dos concorrentes;
+####  [Preco praticado] representa uma rota para cadastro de preços dos concorrentes;
 GET - get_precopraticado: [/precopraticado/v1](http://localhost:5000/precopraticado/v1)
 POST - add_precopraticado: [/precopraticado/v1](http://localhost:5000/precopraticado/v1)
 GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](http://localhost:5000/precopraticado/v1/{faixa_preco})
@@ -117,13 +117,13 @@ GET - get_by_concorrente_nome: [/concorrentes/v1/nome](https://acompanhamento-co
 GET - get_by_concorrente_municipio: [/concorrentes/v1/municipio](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/municipio)
 GET - get_by_concorrente_codigo_bairro: [/concorrentes/v1/codigobairro](https://acompanhamento-concorrentes.herokuapp.com/concorrentes/v1/codigobairro)
 
-####  [Eventos] representa os logs coletados dos fluxos de pessoas;
+####  [Eventos] representa os logs coletados dos concorrentes;
 GET - get_all_eventos: [/eventos/v1](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1)
 GET - get_by_evento_codigo_concorrente: [/eventos/v1/concorrente](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/concorrente)
 GET - get_by_evento_diadasemana: [/eventos/v1/diadasemana](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/diadasemana)
 GET - get_by_evento_periodo: [/eventos/v1/periodo](https://acompanhamento-concorrentes.herokuapp.com/eventos/v1/periodo)
 
-####  [Precopraticado] representa uma rota para cadastro de preços dos concorrentes;
+####  [Preco praticado] representa uma rota para cadastro de preços dos concorrentes;
 GET - get_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
 POST - add_precopraticado: [/precopraticado/v1](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1)
 GET - get_by_faixa_preco: [/precopraticado/v1/{faixa_preco}](https://acompanhamento-concorrentes.herokuapp.com/precopraticado/v1/{faixa_preco})

@@ -67,13 +67,30 @@ paths:
       responses:
         200:
           description: Veja todos os bairros
+      parameters: 
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.            
   /bairros/v1/{codigo}:
     get:
       operationId: api.bairros.get_by_bairro
       tags:
         - bairros
       summary: Recupera bairro pelo codigo do bairro
-      description: Mostra bairro pelo codigo do bairro
+      description: Mostra bairro pelo codigo do bairro <br/>
+        exemplo [<strong>355620110</strong>]
       parameters:
         - name: codigo
           in: path
@@ -105,13 +122,29 @@ paths:
       tags:
         - bairros
       summary: Recupera bairro pelo Estado(UF)
-      description: Mostra bairro pelo Estado(UF)
+      description: Mostra bairro pelo Estado(UF) <br/>
+        exemplo [<strong>SP</strong>]
       parameters:
         - name: uf
           in: query
           description:  Recupera dados por Estado(UF)
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.           
       responses:
         200:
           description: Exibir informações do bairro com sucesso
@@ -137,13 +170,29 @@ paths:
       tags:
         - bairros
       summary: Recupera bairro pelo Nome
-      description: Mostra bairro pelo Nome
+      description: Mostra bairro pelo Nome <br/>
+        exemplo [<strong>Rp 6</strong>]
       parameters:
         - name: nome
           in: query
           description:  Recupera dados por Nome
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos. 
       responses:
         200:
           description: Exibir informações do bairro com sucesso
@@ -169,13 +218,29 @@ paths:
       tags:
         - bairros
       summary: Recupera bairro pelo Município
-      description: Mostra bairro pelo Município
+      description: Mostra bairro pelo Município <br/>
+        exemplo [<strong>Valinhos</strong>]
       parameters:
         - name: municipio
           in: query
           description:  Recupera dados por Município
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.   
       responses:
         200:
           description: Exibir informações do bairro com sucesso
@@ -435,6 +500,22 @@ paths:
       responses:
         200:
           description: Veja todos os concorrentes
+      parameters:
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.  
 
   /concorrentes/v1/{codigo}:
     get:
@@ -442,7 +523,8 @@ paths:
       tags:
         - concorrentes
       summary: Recupera concorrente pelo codigo do concorrente
-      description: Mostra concorrente pelo codigo do concorrente
+      description: Mostra concorrente pelo codigo do concorrente<br/>
+        exemplo [<strong>257257511043276</strong>]
       parameters:
         - name: codigo
           in: path
@@ -478,14 +560,30 @@ paths:
       operationId: api.concorrentes.get_by_concorrente_uf
       tags:
         - concorrentes
-      summary: Recupera concorrente pelo Estado(UF)
-      description: Mostra concorrente pelo Estado(UF)
+      summary: Recupera concorrente pelo Estado(UF) 
+      description: Mostra concorrente pelo Estado(UF) <br/>
+        exemplo [<strong>SP</strong>]
       parameters:
         - name: uf
           in: query
           description:  Recupera dados por Estado(UF)
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.  
       responses:
         200:
           description: Exibir informações do concorrente com sucesso
@@ -516,13 +614,30 @@ paths:
       tags:
         - concorrentes
       summary: Recupera concorrente pelo Nome
-      description: Mostra concorrente pelo Nome
+      description: Mostra concorrente pelo Nome <br/>
+        exemplo [<strong>Ponto de Encontro</strong>]
       parameters:
         - name: nome
           in: query
           description:  Recupera dados por Nome
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.
+
       responses:
         200:
           description: Exibir informações do concorrente com sucesso
@@ -553,13 +668,29 @@ paths:
       tags:
         - concorrentes
       summary: Recupera concorrente pelo Municipio
-      description: Mostra concorrente pelo Municipio
+      description: Mostra concorrente pelo Municipio <br/>
+        exemplo [<strong>Campinas</strong>]
       parameters:
         - name: municipio
           in: query
           description:  Recupera dados por Municipio
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.            
       responses:
         200:
           description: Exibir informações do concorrente com sucesso
@@ -589,14 +720,30 @@ paths:
       operationId: api.concorrentes.get_by_concorrente_codigo_bairro
       tags:
         - concorrentes
-      summary: Recupera concorrente pelo codigo do bairro
-      description: Mostra concorrente pelo codigo do bairro
+      summary: Recupera concorrente pelo codigo do bairro 
+      description: Mostra concorrente pelo codigo do bairro <br/>
+        exemplo [<strong>35095070</strong>]
       parameters:
         - name: codigo_bairro
           in: query
           description:  Recupera dados por codigo do bairro
           type: string
           required: true
+        - in: query
+          name: offset
+          type: integer
+          required: false
+          default: 1
+          minimum: 0
+          description: O número de itens a pular antes de começar a coletar o conjunto de resultados
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: O número de itens a serem devolvidos.            
       responses:
         200:
           description: Exibir informações do concorrente com sucesso

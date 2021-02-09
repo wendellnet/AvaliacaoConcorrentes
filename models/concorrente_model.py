@@ -20,8 +20,12 @@ class Concorrentes(db.Model):
         'municipio': self.municipio, 'uf': self.uf, 'codigo_bairro': self.codigo_bairro}
 
     @staticmethod
-    def get_all_concorrentes():
-        return [Concorrentes.json(concorrente) for concorrente in Concorrentes.query.all()]
+    def get_all_concorrentes(offset, limit):
+        #return [Concorrentes.json(concorrente) for concorrente in Concorrentes.query.all()]
+        query = Concorrentes.query.paginate(offset,limit,error_out=False)
+        #print(query.items)
+        return query.items
+
 
     @staticmethod
     def get_concorrente(_codigo):
@@ -29,28 +33,28 @@ class Concorrentes(db.Model):
         return query
     
     @staticmethod
-    def get_concorrente_by_name(_nome):
-        query = Concorrentes.query.filter(Concorrentes.nome.like('%' + str(_nome) + '%')).all()
+    def get_concorrente_by_name(_nome, offset, limit):
+        query = Concorrentes.query.filter(Concorrentes.nome.like('%' + str(_nome) + '%')).paginate(offset,limit,error_out=False)
         #q = session.query(Bairros).filter(Bairros.nome.like('e%')).\
         #        limit(5).from_self().\
         #        join(User.addresses).filter(Address.email.like('q%'))
 
-        return query
+        return query.items
     
     @staticmethod
-    def get_concorrente_by_uf(_uf):
-        query = Concorrentes.query.filter_by(uf=_uf).all()
-        return query
+    def get_concorrente_by_uf(_uf, offset, limit):
+        query = Concorrentes.query.filter_by(uf=_uf).paginate(offset,limit,error_out=False)
+        return query.items
     
     @staticmethod
-    def get_concorrente_by_codigo_bairro(_codigo_bairro):
-        query = Concorrentes.query.filter_by(codigo_bairro=_codigo_bairro).all()
-        return query
+    def get_concorrente_by_codigo_bairro(_codigo_bairro, offset, limit):
+        query = Concorrentes.query.filter_by(codigo_bairro=_codigo_bairro).paginate(offset,limit,error_out=False)
+        return query.items
 
     @staticmethod
-    def get_concorrente_by_municipio(_municipio):
-        query = Concorrentes.query.filter_by(municipio=_municipio).all()
-        return query
+    def get_concorrente_by_municipio(_municipio, offset, limit):
+        query = Concorrentes.query.filter_by(municipio=_municipio).paginate(offset,limit,error_out=False)
+        return query.items
 
     @staticmethod
     def add_concorrentes_td(conn):

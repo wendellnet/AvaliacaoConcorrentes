@@ -25,8 +25,6 @@ class Eventos(db.Model):
 
     @staticmethod
     def get_evento_by_codigo_concorrente(_codigo_concorrente, offset, limit):
-        print("entrei")
-        print(offset, limit, _codigo_concorrente)
         query = Eventos.query.filter_by(codigo_concorrente=_codigo_concorrente).paginate(offset,limit,error_out=False)
         return query.items
     

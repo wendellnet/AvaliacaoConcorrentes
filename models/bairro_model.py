@@ -16,11 +16,13 @@ class Bairros(db.Model):
         return{'codigo': self.codigo, 'nome': self.nome, 'municipio': self.municipio, 'uf': self.uf, 'area': self.area}
 
     @staticmethod
-    def get_all_bairros():
-        #query = Bairros.query.all()
-        #print(query)
-        #return query
-        return [Bairros.json(bairro) for bairro in Bairros.query.all()]
+    def get_all_bairros(offset, limit):
+        #return [Concorrentes.json(concorrente) for concorrente in Concorrentes.query.all()]
+        query = Bairros.query.paginate(offset,limit,error_out=False)
+        #print(query.items)
+        return query.items
+
+        #return [Bairros.json(bairro) for bairro in Bairros.query.all()]
 
     @staticmethod
     def get_bairro(_codigo):
@@ -28,19 +30,19 @@ class Bairros(db.Model):
         return query
     
     @staticmethod
-    def get_bairro_by_name(_nome):
-        query = Bairros.query.filter(Bairros.nome.like('%' + str(_nome) + '%')).all()
-        return query
+    def get_bairro_by_name(_nome, offset, limit):
+        query = Bairros.query.filter(Bairros.nome.like('%' + str(_nome) + '%')).paginate(offset,limit,error_out=False)
+        return query.items
     
     @staticmethod
-    def get_bairro_by_municipio(_municipio):
-        query = Bairros.query.filter(Bairros.municipio.like('%' + str(_municipio) + '%')).all()
-        return query
+    def get_bairro_by_municipio(_municipio, offset, limit):
+        query = Bairros.query.filter(Bairros.municipio.like('%' + str(_municipio) + '%')).paginate(offset,limit,error_out=False)
+        return query.items
     
     @staticmethod
-    def get_bairro_by_uf(_uf):
-        query = Bairros.query.filter_by(uf=_uf).all()
-        return query
+    def get_bairro_by_uf(_uf, offset, limit):
+        query = Bairros.query.filter_by(uf=_uf).paginate(offset,limit,error_out=False)
+        return query.items
 
     @staticmethod
     def add_bairros(_codigo, _nome, _municipio, _uf, _area):

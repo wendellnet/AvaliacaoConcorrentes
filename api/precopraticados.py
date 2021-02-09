@@ -32,7 +32,6 @@ def update_descricao(faixa_preco):
     request_data = request.get_json()
     try:
         jsonschema.validate(request_data, update_descricao_schema)
-        # state is coming from url param, and capital from json request body
         PrecoPraticado.update_descricao(faixa_preco, request_data['descricao'])
         response = Response('', 204, mimetype="application/json")
     except jsonschema.exceptions.ValidationError as exc:

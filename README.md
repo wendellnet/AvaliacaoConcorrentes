@@ -173,6 +173,4 @@ Pedimos que você faça um ** ** com pelo menos instruções básicas como:
 
 Quando terminar o desafio, avise para o recrutador para podermos dar início a correção.
 
-Bom teste!
-
-----------
+Bom teste

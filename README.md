@@ -1,5 +1,7 @@
-# Processo Seletivo Engenheiro(a) de Dados
-----------
+# Avaliação de Concorrentes
+Desafio para um processo seletivo de engenharia de dados.
+
+Resolvi expor a solução `SOLUTION.MD` para auxiliar pessoas que estão estudando e querendo aprender sobre python, docker, testes integrados, api rest e swagger.
 
 ### Desafio Técnico
 A equipe de produtos tem recebido feedbacks da equipe comercial e eles dizem que alguns clientes do setor de alimentação (restaurantes, pizzarias, bares, etc.) estão procurando soluções que os ajudem a entender melhor seus concorrentes. Eles gostariam de saber qual é a faixa de preço praticada pelos concorrentes, como é o fluxo de pessoas nesses locais, qual é a população e a densidade demográfica dos bairros onde os concorrentes estão, e etc.
